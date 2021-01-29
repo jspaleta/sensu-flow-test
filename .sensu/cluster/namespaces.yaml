@@ -1,5 +1,1 @@
----
-type: Namespace
-api_version: core/v2
-spec:
-  name: test-namespace
+test-namespace
