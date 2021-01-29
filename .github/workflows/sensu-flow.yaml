@@ -17,7 +17,7 @@ jobs:
 
     # Step 2: use the versioned sensu/sensuflow action 
     - name: Sensuflow with required settings
-      uses: sensu/sensu-flow@v0.2.2
+      uses: sensu/sensu-flow@v0.2.1
       with:
         # Required configuration
         # Please make use of GitHub secrets for sensitive information 
@@ -25,6 +25,7 @@ jobs:
         sensu_user: ${{ secrets.SENSU_USER }}
         sensu_password: ${{ secrets.SENSU_PASSWORD }} 
         # Optional configuration, if not present defaults will be used
+        disable_sanity_checks: true
         namespaces_dir: .sensu/namespaces
         namespaces_file: .sensu/cluster/namespaces.yaml
         matching_label: "sensu.io/workflow"
