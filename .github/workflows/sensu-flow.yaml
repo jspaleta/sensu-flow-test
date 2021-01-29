@@ -1,0 +1,31 @@
+name: SensuFlow CI Example
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Defined the SensuFlow job 
+  SensuFlow:
+    runs-on: ubuntu-latest
+    steps:
+    # Step 1: Checks-out your repository, so your job can access it
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Step 2: use the versioned sensu/sensuflow action 
+    - name: Sensuflow with required settings
+      uses: sensu/sensu-flow@v0.2.2
+      with:
+        # Required configuration
+        # Please make use of GitHub secrets for sensitive information 
+        sensu_backend_url: ${{ secrets.SENSU_BACKEND_URL }}
+        sensu_user: ${{ secrets.SENSU_USER }}
+        sensu_password: ${{ secrets.SENSU_PASSWORD }} 
+        # Optional configuration, if not present defaults will be used
+        namespaces_dir: .sensu/namespaces
+        namespaces_file: .sensu/cluster/namespaces.yaml
+        matching_label: "sensu.io/workflow"
+        matching_condition: "== sensu-flow"
