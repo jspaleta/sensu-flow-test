@@ -27,6 +27,5 @@ jobs:
         # Optional configuration, if not present defaults will be used
         disable_sanity_checks: true
         namespaces_dir: .sensu/namespaces
-        namespaces_file: .sensu/cluster/namespaces.yaml
         matching_label: "sensu.io/workflow"
         matching_condition: "== sensu-flow"
