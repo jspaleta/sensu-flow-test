@@ -28,4 +28,4 @@ jobs:
         disable_sanity_checks: true
         namespaces_dir: .sensu/namespaces
         matching_label: "sensu.io/workflow"
-        matching_condition: "== sensu-flow"
+        matching_condition: "== 'sensu-flow'"
