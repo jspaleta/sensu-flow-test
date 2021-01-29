@@ -6,4 +6,4 @@ metadata:
     sensu.io/workflow: sensu-flow
 spec:
   command: sleep 10
-
+  type: pipe
