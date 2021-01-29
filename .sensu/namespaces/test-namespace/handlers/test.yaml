@@ -1,4 +1,4 @@
-type: HandlerConfig
+type: Handler
 api_version: core/v2
 metadata:
   name: test
