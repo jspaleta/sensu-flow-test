@@ -6,7 +6,7 @@ metadata:
     sensu.io/workflow: sensu-flow
 spec:
   command: echo "hello world"
-  interval: 30
+  interval: 10
   publish: false
   subscriptions:
   - test
