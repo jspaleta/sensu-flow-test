@@ -1,32 +1,34 @@
-name: SensuFlow CI Example
+name: SensuFlow Resource Publish
 
+##
+# You'll want to review the GitHub Action 'on' conditions to match your policy
+##
 on:
   push:
+    # Run for any commit or tag pushed to the main branch of the github repository
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    # Run when any tag is pushed to the github repository
+    tags: ['**'] 
 jobs:
-  # Defined the SensuFlow job 
+  # Define the SensuFlow workflow job 
   SensuFlow:
     runs-on: ubuntu-latest
     steps:
-    # Step 1: Checks-out your repository, so your job can access it
+    # Step 1: Checks-out your repository
     - name: Checkout
       uses: actions/checkout@v2
 
     # Step 2: use the versioned sensu/sensuflow action 
     - name: Sensuflow with required settings
-      uses: sensu/sensu-flow@0.4.0
+      uses: sensu/sensu-flow@0.6.0
       with:
         # Required configuration
         # Please make use of GitHub secrets for sensitive information 
         sensu_backend_url: ${{ secrets.SENSU_BACKEND_URL }}
-        sensu_user: ${{ secrets.SENSU_USER }}
-        sensu_password: ${{ secrets.SENSU_PASSWORD }} 
+        sensu_api_key: ${{ secrets.SENSU_API_KEY }}
         # Optional configuration, if not present defaults will be used
-        #disable_sanity_checks: true
         namespaces_dir: .sensu/namespaces
         namespaces_file: .sensu/cluster/namespaces.yaml
         matching_label: "sensu.io/workflow"
         matching_condition: "== 'sensu-flow'"
+        # The full list of configuration options can be found at https://github.com/sensu/sensu-flow 
