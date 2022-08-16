@@ -24,7 +24,7 @@ jobs:
       with:
         # Required configuration
         # Please make use of GitHub secrets for sensitive information 
-        sensu_backend_url: ${{ secrets.SENSU_BACKEND_URL }}
+        sensu_api_url: ${{ secrets.SENSU_API_URL }}
         sensu_api_key: ${{ secrets.SENSU_API_KEY }}
         # Optional configuration, if not present defaults will be used
         namespaces_dir: .sensu/namespaces
