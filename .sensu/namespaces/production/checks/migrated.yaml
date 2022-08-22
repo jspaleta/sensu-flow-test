@@ -1,0 +1,61 @@
+type: CheckConfig
+api_version: core/v2
+metadata:
+  created_by: sensu
+  name: test_check_01
+  namespace: production
+  labels:
+    sensu.io/workflow: sensu-flow
+spec:
+  check_hooks: null
+  command: echo "this is a test"
+  env_vars: null
+  handlers: []
+  high_flap_threshold: 0
+  interval: 60
+  low_flap_threshold: 0
+  output_metric_format: ""
+  output_metric_handlers: null
+  pipelines: []
+  proxy_entity_name: ""
+  publish: true
+  round_robin: false
+  runtime_assets: null
+  secrets: null
+  stdin: false
+  subdue: null
+  subscriptions:
+    - test
+  timeout: 0
+  ttl: 0
+---
+type: CheckConfig
+api_version: core/v2
+metadata:
+  created_by: sensu
+  name: test_chek_02
+  namespace: production
+  labels:
+    sensu.io/workflow: sensu-flow
+spec:
+  check_hooks: null
+  command: echo "this is a second test"
+  env_vars: null
+  handlers: []
+  high_flap_threshold: 0
+  interval: 120
+  low_flap_threshold: 0
+  output_metric_format: ""
+  output_metric_handlers: null
+  pipelines: []
+  proxy_entity_name: ""
+  publish: true
+  round_robin: false
+  runtime_assets: null
+  secrets: null
+  stdin: false
+  subdue: null
+  subscriptions:
+    - test
+  timeout: 0
+  ttl: 0
