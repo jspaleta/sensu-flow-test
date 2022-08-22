@@ -7,7 +7,7 @@ on:
   push:
     tags:
       - '**' # run on any tag push
-    branches: [ main ]  # run on push to main
+    branches: [ '**' ]  # run on push to main
   pull_request:
     branches: [ main ] # run on any PR against main
 
@@ -50,17 +50,13 @@ jobs:
         --name sensu-backend
         --hostname sensu-backend 
         --network ${{ job.container.network }}  
-        -e SENSU_BACKEND_CLUSTER_ADMIN_USERNAME=${{ secrets.SENSU_USER }} 
-        -e SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD=${{ secrets.SENSU_PASSWORD }}
+        -e SENSU_BACKEND_CLUSTER_ADMIN_USERNAME=${{ ci-sensu-test-admin }} 
+        -e SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD=${{ ci-sensu-test-admin }}
         -e SENSU_BACKEND_CLUSTER_ADMIN_API_KEY=${{ secrets.SENSU_API_KEY }}
         sensu/sensu:latest
         sensu-backend start
     - name: wait for sensu-backend
       run: curl --head -X GET --retry 10 --retry-connrefused --retry-delay 2 http://sensu-backend:8080/health
-    - name: docker ps
-      run: docker ps
-    - name: docker logs
-      run: docker logs sensu-backend
 
     # Test SensuFlow action against test backend container
     # Note: Make sure the configuration here matches the release workflow.
