@@ -4,6 +4,8 @@ metadata:
   created_by: sensu
   name: test_check_01
   namespace: production
+  labels:
+    sensu.io/workflow: sensu-flow
 spec:
   check_hooks: null
   command: echo "this is a test"
@@ -23,7 +25,7 @@ spec:
   stdin: false
   subdue: null
   subscriptions:
-  - test
+    - test
   timeout: 0
   ttl: 0
 ---
@@ -33,6 +35,8 @@ metadata:
   created_by: sensu
   name: test_chek_02
   namespace: production
+  labels:
+    sensu.io/workflow: sensu-flow
 spec:
   check_hooks: null
   command: echo "this is a second test"
@@ -52,6 +56,6 @@ spec:
   stdin: false
   subdue: null
   subscriptions:
-  - test
+    - test
   timeout: 0
   ttl: 0
