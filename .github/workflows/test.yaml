@@ -50,8 +50,8 @@ jobs:
         --name sensu-backend
         --hostname sensu-backend 
         --network ${{ job.container.network }}  
-        -e SENSU_BACKEND_CLUSTER_ADMIN_USERNAME=${{ ci-sensu-test-admin }} 
-        -e SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD=${{ ci-sensu-test-admin }}
+        -e SENSU_BACKEND_CLUSTER_ADMIN_USERNAME=ci-sensu-test-admin  
+        -e SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD=ci-sensu-test-admin 
         -e SENSU_BACKEND_CLUSTER_ADMIN_API_KEY=${{ secrets.SENSU_API_KEY }}
         sensu/sensu:latest
         sensu-backend start
