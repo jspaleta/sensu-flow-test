@@ -33,7 +33,7 @@ jobs:
         matching_label: "sensu.io/workflow"
         matching_condition: "== 'sensu-flow'"
         # Only prune resources created by this comma separated list of resource-authors  
-        resource-authors: "sensu-flow,sensu-flow-production"
+        resource_authors: "sensu-flow,sensu-flow-production"
         # Only manage these resource typoes
         managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret"
         #managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret,bsm/v1.RuleTemplate,bsm/v1.ServiceComponent,pipeline/v1.TCPStreamHandler,pipeline/v1.SumoLogicMetricsHandler"
