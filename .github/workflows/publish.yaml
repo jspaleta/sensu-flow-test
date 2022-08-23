@@ -31,4 +31,6 @@ jobs:
         namespaces_file: .sensu/cluster/namespaces.yaml
         matching_label: "sensu.io/workflow"
         matching_condition: "== 'sensu-flow'"
+        managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret"
+        #managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret,bsm/v1.RuleTemplate,bsm/v1.ServiceComponent,pipeline/v1.TCPStreamHandler,pipeline/v1.SumoLogicMetricsHandler"
         # The full list of configuration options can be found at https://github.com/sensu/sensu-flow 
