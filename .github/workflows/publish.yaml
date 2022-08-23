@@ -20,7 +20,8 @@ jobs:
 
     # Step 2: use the versioned sensu/sensuflow action 
     - name: Sensuflow with required settings
-      uses: sensu/sensu-flow@0.6.0
+      # Using main branch while in development
+      uses: sensu/sensu-flow@main
       with:
         # Required configuration
         # Please make use of GitHub secrets for sensitive information 
@@ -31,6 +32,9 @@ jobs:
         namespaces_file: .sensu/cluster/namespaces.yaml
         matching_label: "sensu.io/workflow"
         matching_condition: "== 'sensu-flow'"
+        # Only prune resources created by this comma separated list of resource-authors  
+        resource-authors: "sensu-flow,sensu-flow-production"
+        # Only manage these resource typoes
         managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret"
         #managed_resources: "assets,checks,entities,events,filters,handlers,hooks,mutators,pipelines,silenced,secrets/v1.Secret,bsm/v1.RuleTemplate,bsm/v1.ServiceComponent,pipeline/v1.TCPStreamHandler,pipeline/v1.SumoLogicMetricsHandler"
         # The full list of configuration options can be found at https://github.com/sensu/sensu-flow 
