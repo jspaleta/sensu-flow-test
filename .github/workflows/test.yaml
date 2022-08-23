@@ -61,7 +61,7 @@ jobs:
     # Test SensuFlow action against test backend container
     # Note: Make sure the configuration here matches the release workflow.
     - name: Test Sensuflow
-      uses: sensu/sensu-flow@0.6.0
+      uses: sensu/sensu-flow@main
       id: matching-label-with-dash
       with:
         sensu_api_url: http://sensu-backend:8080
